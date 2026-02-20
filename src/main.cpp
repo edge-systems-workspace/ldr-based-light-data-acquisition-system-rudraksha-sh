@@ -2,43 +2,46 @@
 /**
  * @file main.ino
  * @brief Embedded Light Intensity Monitoring using LDR
- * @author YOUR_NAME
- * @date YYYY-MM-DD
+ * @author RUDRAKSHA SHARMA (Git- rudraksha-sh )
+ * @date 2026-01-18
  *
  * @details
  * Reads analog brightness data from LDR sensor
  * and displays structured output via Serial Monitor.
  */
 
- // TODO 1:
- // Define LDR analog pin (Use A0)
+// TODO 1:
+#define LDRPIN A0
 
- // TODO 2:
- // Create variable to store sensor reading
+// TODO 2:
+int ldrValue = 0;
 
 void setup() {
 
     // TODO 3:
-    // Initialize Serial communication (9600 baud rate)
+    Serial.begin(9600);
 
     // TODO 4:
-    // Print system initialization message
+    Serial.println("LDR setup");
 }
 
 void loop() {
 
     // TODO 5:
-    // Read analog value from LDR
+    ldrValue = analogRead(LDRPIN);
 
     // TODO 6:
-    // Print raw ADC value
+    Serial.print("LDR Reading: ");
+    Serial.println(ldrValue);
 
-    // TODO 7:
-    // Apply threshold logic (Bright / Dark detection)
+    // TODO 7: Apply threshold logic (Bright / Dark detection)
+    if (ldrValue > 600) {
+        // TODO 8: Print brightness status
+        Serial.println("Status: Bright Environment");
+    } else {
+        Serial.println("Status: Dark Environment");
+    }
 
-    // TODO 8:
-    // Print brightness status
-
-    // TODO 9:
-    // Add delay (500ms or 1 second)
+    // TODO 9: Add delay (500ms or 1 second)
+    delay(1000);
 }
